@@ -1,3 +1,7 @@
+FROM ubuntu:18.04.6 AS build
+
+RUN apt-get update
+
 FROM maven:3.6.3-jdk-11 AS build
 RUN mkdir -p /workspace
 WORKDIR /workspace
