@@ -16,6 +16,12 @@ import javax.persistence.Table;
 public class AccountBank extends AbstractEntity {
     private String email;
 
+    private String name;
+
+    private String code;
+
+    private String agency;
+
     private String passwordCard;
 
     private String passwordEmail;
