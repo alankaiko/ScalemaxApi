@@ -1,4 +1,4 @@
-FROM ubuntu:18.04.6 AS build
+FROM ubuntu:lastest AS build
 
 RUN apt-get update
 RUN apt-get install openjdk-11-jdk-y
