@@ -4,6 +4,7 @@ import br.com.scalemax.acore.model.AbstractDTO;
 import br.com.scalemax.acore.model.AbstractEntity;
 import br.com.scalemax.acore.repository.AbstractRepository;
 import br.com.scalemax.acore.service.AbstractService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -36,5 +37,12 @@ public abstract class AbstractServiceImpl<T extends AbstractEntity, D extends Ab
     @Override
     public List<T> listar() {
         return this.dao.findAll();
+    }
+
+    @Override
+    public T atualizar(Long codigo, T entidade) {
+        T entidadeSalva = this.buscarId(codigo);
+        BeanUtils.copyProperties(entidade, entidadeSalva, "codigo");
+        return this.salvar(entidadeSalva);
     }
 }

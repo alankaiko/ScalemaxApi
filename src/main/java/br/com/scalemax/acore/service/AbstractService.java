@@ -14,4 +14,6 @@ public interface AbstractService<T extends AbstractEntity, D extends AbstractDTO
     T buscarId(Long codigo);
 
     List<T> listar();
+
+    T atualizar(Long codigo, T entidade);
 }

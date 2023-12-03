@@ -3,6 +3,7 @@ package br.com.scalemax.acore.controller;
 import br.com.scalemax.acore.model.AbstractDTO;
 import br.com.scalemax.acore.model.AbstractEntity;
 import br.com.scalemax.acore.service.AbstractService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -20,7 +21,7 @@ public abstract class AbstractController<T extends AbstractEntity, D extends Abs
         return this.service.salvar(entidade);
     }
 
-    @DeleteMapping
+    @DeleteMapping({"{codigo}"})
     public void deletar(@PathVariable Long codigo) {
         this.service.deletar(codigo);
     }
@@ -33,5 +34,11 @@ public abstract class AbstractController<T extends AbstractEntity, D extends Abs
     @GetMapping
     public List<T> listar() {
         return this.service.listar();
+    }
+
+    @PutMapping("/{codigo}")
+    public ResponseEntity<T> atualizar(@PathVariable Long codigo, @Valid @RequestBody T entidade) {
+        T entidadeSalvo = this.service.atualizar(codigo, entidade);
+        return ResponseEntity.ok(entidadeSalvo);
     }
 }

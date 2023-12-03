@@ -24,7 +24,7 @@ public class BankController extends AbstractController<Bank, BankDTO> {
     }
 
     @GetMapping(params = "resumo")
-    public Page<Bank> Resumir(BankDTO bankDTO, Pageable page) {
+    public Page<Bank> resumir(BankDTO bankDTO, Pageable page) {
         return this.bankService.filtrando(bankDTO, page);
     }
 }
