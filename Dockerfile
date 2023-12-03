@@ -7,23 +7,12 @@ COPY . .
 RUN apt-get install maven -y
 RUN mvn clean install
 
-FROM maven:3.6.3-jdk-11 AS build
+FROM maven:3.6.3-jdk-11 AS final
 RUN mkdir -p /workspace
 WORKDIR /workspace
-COPY pom.xml /workspace
-COPY src /workspace/src
+COPY --from=build /workspace/target/*.jar /workspace/app.jar
 
-RUN mvn -f pom.xml clean package
 FROM openjdk:11-jdk
-COPY --from=build /workspace/target/*.jar app.jar
+COPY --from=final /workspace/app.jar /app.jar
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","app.jar"]
-
-
-
-
-
-
-
-
-
+ENTRYPOINT ["java", "-jar", "/app.jar"]
