@@ -50,8 +50,8 @@ public class AfiliateRepositoryImpl extends AbstractRepositoryImpl<Afiliate, Afi
     private Predicate[] adicionarRestricoes(CriteriaBuilder builder, AfiliateDTO afiliateDTO, Root<Afiliate> root) {
         List<Predicate> lista = new ArrayList<>();
 
-        if (!StringUtils.isEmpty(afiliateDTO.getNome()))
-            lista.add(builder.like(builder.lower(root.get("nome")), "%" + afiliateDTO.getNome().toLowerCase() + "%"));
+        if (!StringUtils.isEmpty(afiliateDTO.getName()))
+            lista.add(builder.like(builder.lower(root.get("name")), "%" + afiliateDTO.getName().toLowerCase() + "%"));
 
         return lista.toArray(new Predicate[lista.size()]);
     }

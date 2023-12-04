@@ -50,8 +50,8 @@ public class OrderCampgainRepositoryImpl extends AbstractRepositoryImpl<OrderCam
     private Predicate[] adicionarRestricoes(CriteriaBuilder builder, OrderCampgainDTO orderCampgainDTO, Root<OrderCampgain> root) {
         List<Predicate> lista = new ArrayList<>();
 
-        if (!StringUtils.isEmpty(orderCampgainDTO.getNome()))
-            lista.add(builder.like(builder.lower(root.get("nome")), "%" + orderCampgainDTO.getNome().toLowerCase() + "%"));
+        if (!StringUtils.isEmpty(orderCampgainDTO.getName()))
+            lista.add(builder.like(builder.lower(root.get("name")), "%" + orderCampgainDTO.getName().toLowerCase() + "%"));
 
         return lista.toArray(new Predicate[lista.size()]);
     }

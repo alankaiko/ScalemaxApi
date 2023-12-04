@@ -50,8 +50,8 @@ public class ReceiverRepositoryImpl extends AbstractRepositoryImpl<Receiver, Rec
     private Predicate[] adicionarRestricoes(CriteriaBuilder builder, ReceiverDTO receiverDTO, Root<Receiver> root) {
         List<Predicate> lista = new ArrayList<>();
 
-        if (!StringUtils.isEmpty(receiverDTO.getNome()))
-            lista.add(builder.like(builder.lower(root.get("nome")), "%" + receiverDTO.getNome().toLowerCase() + "%"));
+        if (!StringUtils.isEmpty(receiverDTO.getName()))
+            lista.add(builder.like(builder.lower(root.get("name")), "%" + receiverDTO.getName().toLowerCase() + "%"));
 
         return lista.toArray(new Predicate[lista.size()]);
     }

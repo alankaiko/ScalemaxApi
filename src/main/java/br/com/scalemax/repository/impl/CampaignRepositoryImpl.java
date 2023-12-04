@@ -50,8 +50,8 @@ public class CampaignRepositoryImpl extends AbstractRepositoryImpl<Campaign, Cam
     private Predicate[] adicionarRestricoes(CriteriaBuilder builder, CampaignDTO campaignDTO, Root<Campaign> root) {
         List<Predicate> lista = new ArrayList<>();
 
-        if (!StringUtils.isEmpty(campaignDTO.getNome()))
-            lista.add(builder.like(builder.lower(root.get("nome")), "%" + campaignDTO.getNome().toLowerCase() + "%"));
+        if (!StringUtils.isEmpty(campaignDTO.getName()))
+            lista.add(builder.like(builder.lower(root.get("name")), "%" + campaignDTO.getName().toLowerCase() + "%"));
 
         return lista.toArray(new Predicate[lista.size()]);
     }

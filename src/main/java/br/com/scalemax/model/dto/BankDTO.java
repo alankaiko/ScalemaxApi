@@ -7,5 +7,5 @@ import lombok.Setter;
 @Getter
 @Setter
 public class BankDTO extends AbstractDTO {
-    private String nome;
+    private String name;
 }

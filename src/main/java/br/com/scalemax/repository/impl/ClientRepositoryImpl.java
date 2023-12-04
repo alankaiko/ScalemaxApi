@@ -50,8 +50,8 @@ public class ClientRepositoryImpl extends AbstractRepositoryImpl<Client, ClientD
     private Predicate[] adicionarRestricoes(CriteriaBuilder builder, ClientDTO clientDTO, Root<Client> root) {
         List<Predicate> lista = new ArrayList<>();
 
-        if (!StringUtils.isEmpty(clientDTO.getNome()))
-            lista.add(builder.like(builder.lower(root.get("nome")), "%" + clientDTO.getNome().toLowerCase() + "%"));
+        if (!StringUtils.isEmpty(clientDTO.getName()))
+            lista.add(builder.like(builder.lower(root.get("name")), "%" + clientDTO.getName().toLowerCase() + "%"));
 
         return lista.toArray(new Predicate[lista.size()]);
     }

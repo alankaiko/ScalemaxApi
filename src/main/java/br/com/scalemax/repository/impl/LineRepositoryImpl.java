@@ -50,8 +50,8 @@ public class LineRepositoryImpl extends AbstractRepositoryImpl<Line, LineDTO, Lo
     private Predicate[] adicionarRestricoes(CriteriaBuilder builder, LineDTO lineDTO, Root<Line> root) {
         List<Predicate> lista = new ArrayList<>();
 
-        if (!StringUtils.isEmpty(lineDTO.getNome()))
-            lista.add(builder.like(builder.lower(root.get("nome")), "%" + lineDTO.getNome().toLowerCase() + "%"));
+        if (!StringUtils.isEmpty(lineDTO.getName()))
+            lista.add(builder.like(builder.lower(root.get("name")), "%" + lineDTO.getName().toLowerCase() + "%"));
 
         return lista.toArray(new Predicate[lista.size()]);
     }

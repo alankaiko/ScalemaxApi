@@ -50,8 +50,8 @@ public class PermissaoRepositoryImpl extends AbstractRepositoryImpl<Permissao, P
     private Predicate[] adicionarRestricoes(CriteriaBuilder builder, PermissaoDTO permissaoDTO, Root<Permissao> root) {
         List<Predicate> lista = new ArrayList<>();
 
-        if (!StringUtils.isEmpty(permissaoDTO.getNome()))
-            lista.add(builder.like(builder.lower(root.get("nome")), "%" + permissaoDTO.getNome().toLowerCase() + "%"));
+        if (!StringUtils.isEmpty(permissaoDTO.getName()))
+            lista.add(builder.like(builder.lower(root.get("name")), "%" + permissaoDTO.getName().toLowerCase() + "%"));
 
         return lista.toArray(new Predicate[lista.size()]);
     }

@@ -50,8 +50,8 @@ public class AccountBankRepositoryImpl extends AbstractRepositoryImpl<AccountBan
     private Predicate[] adicionarRestricoes(CriteriaBuilder builder, AccountBankDTO accountBankDTO, Root<AccountBank> root) {
         List<Predicate> lista = new ArrayList<>();
 
-        if (!StringUtils.isEmpty(accountBankDTO.getNome()))
-            lista.add(builder.like(builder.lower(root.get("nome")), "%" + accountBankDTO.getNome().toLowerCase() + "%"));
+        if (!StringUtils.isEmpty(accountBankDTO.getName()))
+            lista.add(builder.like(builder.lower(root.get("name")), "%" + accountBankDTO.getName().toLowerCase() + "%"));
 
         return lista.toArray(new Predicate[lista.size()]);
     }
